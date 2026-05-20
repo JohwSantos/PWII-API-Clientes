@@ -9,7 +9,7 @@ app.use(express.json());
 //Rota raiz:
 
 app.get("/", (req,res) => {
-    res.json({
+    res.status(200).json({
         mensagem:"API de Clientes",
         versao: "1.0.0",
         endpoints: {
@@ -22,7 +22,7 @@ app.get("/", (req,res) => {
 app.use("/clientes", clientesRoutes);
 
 app.use((req,res) =>{
-    res.status(404).json({
+    return res.status(404).json({
         sucesso: false,
         mensagem: "Rota não encontrada",
     })
